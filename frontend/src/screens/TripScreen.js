@@ -10,7 +10,7 @@ export default function TripScreen() {
 
   useEffect(() => {
     SocketService.initializeSocket();
-    
+
     return () => {
       if (isTracking) {
         Location.stopLocationUpdatesAsync(LOCATION_TASK_NAME);

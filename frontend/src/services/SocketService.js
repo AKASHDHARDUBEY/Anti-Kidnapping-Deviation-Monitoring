@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 class SocketService {
   constructor() {
     this.socket = null;
-    this.serverUrl = 'http://YOUR_AWS_EC2_IP:5000';
+    this.serverUrl = 'http://51.21.150.93:5000'; // AWS EC2 Public IP
   }
 
   initializeSocket() {
