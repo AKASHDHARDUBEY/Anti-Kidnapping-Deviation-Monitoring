@@ -7,7 +7,6 @@ class TripRepository extends BaseRepository { // 2. Use 'extends' to inherit
         super(Trip); // 3. Pass the Trip model to the Parent constructor
     }
 
-    // KEEP ALL YOUR EXISTING METHODS BELOW
     async createTrip(tripData) {
         const trip = new Trip(tripData);
         return await trip.save();
@@ -28,7 +27,7 @@ class TripRepository extends BaseRepository { // 2. Use 'extends' to inherit
     async addIncidentLog(tripId, incident) {
         return await Trip.findOneAndUpdate(
             { tripId },
-            { 
+            {
                 status: 'DEVIATED',
                 $push: { incidents: incident }
             },

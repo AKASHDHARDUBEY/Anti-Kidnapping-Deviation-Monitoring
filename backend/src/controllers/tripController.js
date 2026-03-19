@@ -5,8 +5,7 @@ const notifyService = require('../services/notifyService');
 const cacheRepo = require('../repositories/cacheRepository');
 
 class TripController {
-    
-    // --- ADD THIS HELPER METHOD FOR VALIDATION (Encapsulation) ---
+
     validateLocationData(data) {
         if (!data.tripId || !data.latitude || !data.longitude) {
             throw new Error("Missing required location fields: tripId, latitude, or longitude");
@@ -18,7 +17,6 @@ class TripController {
     }
 
     async handleStartTrip(socket, data) {
-        // Add validation for starting a trip
         if (!data.dest) {
             return socket.emit('error', { message: 'Destination is required' });
         }
@@ -38,8 +36,7 @@ class TripController {
 
     async handleLocationUpdate(socket, data) {
         try {
-            // --- USE THE VALIDATION HERE ---
-            this.validateLocationData(data); 
+            this.validateLocationData(data);
 
             const { tripId, latitude, longitude } = data;
             await cacheRepo.updateLastLocation(tripId, { latitude, longitude });
