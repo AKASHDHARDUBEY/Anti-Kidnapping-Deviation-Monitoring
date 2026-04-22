@@ -25,3 +25,34 @@ useCaseDiagram
     UC4 --> UC6
     UC6 --> A
     D -- UC2 : (Provides vehicle movement)
+
+
+
+
+
+
+
+
+
+    flowchart TD
+    P["Passenger"]
+    D["Driver"]
+    A["Emergency Authorities"]
+    S["System"]
+
+    UC1["Start Trip Tracking"]
+    UC2["Stream Live Location"]
+    UC3["Calculate Route Deviation"]
+    UC4["Trigger Silent Dispatch"]
+    UC5["Monitor Heartbeat"]
+    UC6["Receive Emergency Alert"]
+
+    P --> UC1
+    P --> UC2
+    S --> UC3
+    S --> UC5
+    UC3 --> UC4
+    UC5 --> UC4
+    UC4 --> UC6
+    UC6 --> A
+    D -->|"Provides vehicle movement"| UC2
